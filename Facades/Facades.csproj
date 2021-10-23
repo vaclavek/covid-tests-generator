@@ -2,12 +2,12 @@
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
-		<AssemblyName>Havit.NewProjectTemplate.Facades</AssemblyName>
-		<RootNamespace>Havit.NewProjectTemplate.Facades</RootNamespace>
+		<AssemblyName>CTG.CovidTestsGenerator.Facades</AssemblyName>
+		<RootNamespace>CTG.CovidTestsGenerator.Facades</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<InternalsVisibleTo Include="Havit.NewProjectTemplate.Facades.Tests" />
+		<InternalsVisibleTo Include="CTG.CovidTestsGenerator.Facades.Tests" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -19,8 +19,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Contracts\Contracts.csproj" />
-		<ProjectReference Include="..\DataLayer\DataLayer.csproj" />
-		<ProjectReference Include="..\Model\Model.csproj" />
 		<ProjectReference Include="..\Services\Services.csproj" />
 	</ItemGroup>
 </Project>

@@ -1,29 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Hangfire;
-using Hangfire.AspNetCore;
-using Hangfire.Console;
+using CTG.CovidTestsGenerator.DependencyInjection;
+using CTG.CovidTestsGenerator.Services.Jobs;
 using Hangfire.Console.Extensions;
-using Hangfire.SqlServer;
 using Havit.AspNetCore.ExceptionMonitoring.Services;
 using Havit.Diagnostics.Contracts;
-using Havit.Hangfire.Extensions.BackgroundJobs;
-using Havit.Hangfire.Extensions.Filters;
-using Havit.Hangfire.Extensions.RecurringJobs;
-using Havit.NewProjectTemplate.DependencyInjection;
-using Havit.NewProjectTemplate.Services.Jobs;
-using Havit.NewProjectTemplate.Utility.Hangfire;
 using Microsoft.ApplicationInsights;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Havit.NewProjectTemplate.Utility
+namespace CTG.CovidTestsGenerator.Utility
 {
 	public static class Program
 	{
@@ -45,10 +33,6 @@ namespace Havit.NewProjectTemplate.Utility
 
 					ShowCommandsHelp();
 				}
-			}
-			else
-			{
-				await RunHangfireServer();
 			}
 		}
 
@@ -91,72 +75,6 @@ namespace Havit.NewProjectTemplate.Utility
 			return true;
 		}
 
-		private static IEnumerable<IRecurringJob> GetRecurringJobsToSchedule()
-		{
-			TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
-
-			yield return new RecurringJob<IEmptyJob>(job => job.ExecuteAsync(CancellationToken.None), Cron.Minutely(), timeZone);
-		}
-
-		private static async Task RunHangfireServer()
-		{
-			string connectionString = Configuration.Value.GetConnectionString("Database");
-
-			await ExecuteWithServiceProvider(async (serviceProvider) =>
-			{
-				GlobalConfiguration.Configuration
-					.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-					.UseSimpleAssemblyNameTypeSerializer()
-					.UseFilter(new AutomaticRetryAttribute { Attempts = 0 }) // do not retry failed jobs
-					.UseFilter(new ApplicationInsightAttribute(serviceProvider.GetRequiredService<TelemetryClient>()))
-					.UseFilter(new ExceptionMonitoringAttribute(serviceProvider))
-					.UseFilter(new CancelRecurringJobWhenAlreadyInQueueOrCurrentlyRunningFilter())
-					.UseActivator(new AspNetCoreJobActivator(serviceProvider.GetRequiredService<IServiceScopeFactory>()))
-					.UseSqlServerStorage(() => new Microsoft.Data.SqlClient.SqlConnection(connectionString), new SqlServerStorageOptions
-					{
-						CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-						SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-						QueuePollInterval = TimeSpan.FromSeconds(5),
-						UseRecommendedIsolationLevel = true,
-						DisableGlobalLocks = true // Migration to Schema 7 is required
-					})
-					.UseLogProvider(new AspNetCoreLogProvider(serviceProvider.GetRequiredService<ILoggerFactory>())) // enables .NET Core logging for hangfire server (not jobs!) https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/
-					.UseConsole(); // enables logging jobs progress to hangfire dashboard (only using a PerformContext class; for ILogger<> support add services.AddHangfireConsoleExtensions())
-				JobStorage.Current.JobExpirationTimeout = TimeSpan.FromDays(30); // keep history
-
-#if DEBUG
-				BackgroundJobHelper.DeleteEnqueuedJobs();
-#endif
-
-				// schedule recurring jobs
-				RecurringJobsHelper.SetSchedule(GetRecurringJobsToSchedule().ToArray());
-
-				var options = new BackgroundJobServerOptions
-				{
-					WorkerCount = 1
-				};
-
-				using (var server = new BackgroundJobServer(options))
-				{
-					if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("WEBSITE_SITE_NAME")))
-					{
-						// running in Azure
-						Console.WriteLine("Hangfire Server started. Waiting for shutdown signal...");
-						using (WebJobsShutdownWatcher webJobsShutdownWatcher = new WebJobsShutdownWatcher())
-						{
-							await server.WaitForShutdownAsync(webJobsShutdownWatcher.Token);
-						}
-					}
-					else
-					{
-						// running outside of Azure
-						Console.WriteLine("Hangfire Server started. Press Enter to exit...");
-						Console.ReadLine();
-					}
-				}
-			});
-		}
-
 		private static async Task ExecuteWithServiceProvider(Func<IServiceProvider, Task> action)
 		{
 			IConfiguration configuration = Configuration.Value;
@@ -181,7 +99,7 @@ namespace Havit.NewProjectTemplate.Utility
 			}
 		}
 
-		private static Lazy<IConfiguration> Configuration = new Lazy<IConfiguration>(() =>
+		private static readonly Lazy<IConfiguration> Configuration = new Lazy<IConfiguration>(() =>
 		{
 			var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production";
 

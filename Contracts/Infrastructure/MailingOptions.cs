@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Havit.NewProjectTemplate.Contracts.Infrastructure
+namespace CTG.CovidTestsGenerator.Contracts.Infrastructure
 {
 	public class MailingOptions
 	{

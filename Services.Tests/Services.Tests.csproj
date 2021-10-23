@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
 		<IsPackable>false</IsPackable>
-		<AssemblyName>Havit.NewProjectTemplate.Services.Tests</AssemblyName>
-		<RootNamespace>Havit.NewProjectTemplate.Services.Tests</RootNamespace>
+		<AssemblyName>CTG.CovidTestsGenerator.Services.Tests</AssemblyName>
+		<RootNamespace>CTG.CovidTestsGenerator.Services.Tests</RootNamespace>
 		<PublishDir>obj\$(Configuration)\publish</PublishDir>
 	</PropertyGroup>
 

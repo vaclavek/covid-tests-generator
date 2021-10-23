@@ -5,7 +5,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.NewProjectTemplate.Services.Mailing
+namespace CTG.CovidTestsGenerator.Services.Mailing
 {
 	public interface IMailingService
 	{

@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
 		<DisableImplicitComponentsAnalyzers>true</DisableImplicitComponentsAnalyzers>
-		<AssemblyName>Havit.NewProjectTemplate.Web.Server</AssemblyName>
-		<RootNamespace>Havit.NewProjectTemplate.Web.Server</RootNamespace>
+		<AssemblyName>CTG.CovidTestsGenerator.Web.Server</AssemblyName>
+		<RootNamespace>CTG.CovidTestsGenerator.Web.Server</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -22,10 +22,8 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Contracts\Contracts.csproj" />
-		<ProjectReference Include="..\DataLayer\DataLayer.csproj" />
 		<ProjectReference Include="..\DependencyInjection\DependencyInjection.csproj" />
 		<ProjectReference Include="..\Facades\Facades.csproj" />
-		<ProjectReference Include="..\Model\Model.csproj" />
 		<ProjectReference Include="..\Services\Services.csproj" />
 		<ProjectReference Include="..\Web.Client\Web.Client.csproj" />
 	</ItemGroup>
@@ -70,7 +68,7 @@
 	</Target>
 
     <Target Name="EnsureWebJobInPackage" AfterTargets="CreateReadyToRunImages" BeforeTargets="_PrepareForReadyToRunCompilation">
-        <Error Text="WebJob file Havit.NewProjectTemplate.Utility.exe not found when preparing web deploy package." Condition="!Exists('..\Utility\bin\Release\net5.0\Havit.NewProjectTemplate.Utility.exe')" />
+        <Error Text="WebJob file CTG.CovidTestsGenerator.Utility.exe not found when preparing web deploy package." Condition="!Exists('..\Utility\bin\Release\net5.0\CTG.CovidTestsGenerator.Utility.exe')" />
         <ItemGroup>
             <!-- Vybereme soubory k publikaci. Předpokládá, že Utility je závislostí WebAPI nastavené v SLN. -->
             <WebJobFiles Include="..\Utility\bin\Release\net5.0\**" />

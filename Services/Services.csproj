@@ -2,12 +2,12 @@
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
-		<AssemblyName>Havit.NewProjectTemplate.Services</AssemblyName>
-		<RootNamespace>Havit.NewProjectTemplate.Services</RootNamespace>
+		<AssemblyName>CTG.CovidTestsGenerator.Services</AssemblyName>
+		<RootNamespace>CTG.CovidTestsGenerator.Services</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<InternalsVisibleTo Include="Havit.NewProjectTemplate.Services.Tests" />
+		<InternalsVisibleTo Include="CTG.CovidTestsGenerator.Services.Tests" />
 	</ItemGroup>
 	
 	<ItemGroup>
@@ -15,11 +15,11 @@
 		<PackageReference Include="Havit.Services" Version="2.0.18" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="5.0.11" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Contracts\Contracts.csproj" />
-		<ProjectReference Include="..\DataLayer\DataLayer.csproj" />
-		<ProjectReference Include="..\Model\Model.csproj" />
 	</ItemGroup>
 </Project>	 

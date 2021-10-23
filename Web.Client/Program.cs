@@ -2,28 +2,22 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using BlazorApplicationInsights;
 using Blazored.LocalStorage;
+using CTG.CovidTestsGenerator.Contracts;
+using CTG.CovidTestsGenerator.Contracts.System;
+using CTG.CovidTestsGenerator.Web.Client.Infrastructure.Grpc;
 using FluentValidation;
 using Havit.Blazor.Components.Web;
-using Havit.Blazor.Components.Web.Bootstrap;
 using Havit.Blazor.Grpc.Client;
 using Havit.Blazor.Grpc.Client.ServerExceptions;
-using Havit.Blazor.Grpc.Client.WebAssembly;
-using Havit.NewProjectTemplate.Contracts;
-using Havit.NewProjectTemplate.Contracts.System;
-using Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc;
-using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Havit.NewProjectTemplate.Web.Client
+namespace CTG.CovidTestsGenerator.Web.Client
 {
 	public class Program
 	{
@@ -36,8 +30,6 @@ namespace Havit.NewProjectTemplate.Web.Client
 			builder.RootComponents.Add<App>("app");
 
 			builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-			builder.Services.AddScoped(typeof(AccountClaimsPrincipalFactory<RemoteUserAccount>), typeof(RolesAccountClaimsPrincipalFactory)); // multiple roles workaround
-			builder.Services.AddApiAuthorization();
 
 			builder.Services.AddBlazoredLocalStorage();
 			builder.Services.AddValidatorsFromAssemblyContaining<Dto<object>>();
@@ -45,8 +37,8 @@ namespace Havit.NewProjectTemplate.Web.Client
 			builder.Services.AddHxServices();
 			builder.Services.AddHxMessenger();
 			builder.Services.AddHxMessageBoxHost();
-			Havit.NewProjectTemplate.Web.Client.Resources.ResourcesServiceCollectionInstaller.AddGeneratedResourceWrappers(builder.Services);
-			Havit.NewProjectTemplate.Resources.ResourcesServiceCollectionInstaller.AddGeneratedResourceWrappers(builder.Services);
+			CTG.CovidTestsGenerator.Web.Client.Resources.ResourcesServiceCollectionInstaller.AddGeneratedResourceWrappers(builder.Services);
+			CTG.CovidTestsGenerator.Resources.ResourcesServiceCollectionInstaller.AddGeneratedResourceWrappers(builder.Services);
 			SetHxComponents();
 
 			AddGrpcClient(builder);
@@ -65,22 +57,8 @@ namespace Havit.NewProjectTemplate.Web.Client
 		private static void AddGrpcClient(WebAssemblyHostBuilder builder)
 		{
 			builder.Services.AddTransient<IOperationFailedExceptionGrpcClientListener, HxMessengerOperationFailedExceptionGrpcClientListener>();
-			builder.Services.AddTransient<AuthorizationGrpcClientInterceptor>();
 			builder.Services.AddGrpcClientInfrastructure(assemblyToScanForDataContracts: typeof(Dto).Assembly);
-			builder.Services.AddGrpcClientsByApiContractAttributes(
-				typeof(IDataSeedFacade).Assembly,
-				configureGrpcClientWithAuthorization: grpcClient =>
-				{
-					grpcClient.AddHttpMessageHandler(provider =>
-					{
-						var navigationManager = provider.GetRequiredService<NavigationManager>();
-						var backendUrl = navigationManager.BaseUri;
-
-						return provider.GetRequiredService<AuthorizationMessageHandler>()
-							.ConfigureHandler(authorizedUrls: new[] { backendUrl }); // TODO? as neede: , scopes: new[] { "havit-NewProjectTemplate-api" });
-					})
-					.AddInterceptor<AuthorizationGrpcClientInterceptor>();
-				});
+			builder.Services.AddGrpcClientsByApiContractAttributes(typeof(IMaintenanceFacade).Assembly);
 		}
 
 		private static async ValueTask SetLanguage(WebAssemblyHost webAssemblyHost)

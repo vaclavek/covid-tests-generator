@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
-		<AssemblyName>Havit.NewProjectTemplate.Contracts</AssemblyName>
-		<RootNamespace>Havit.NewProjectTemplate.Contracts</RootNamespace>
+		<AssemblyName>CTG.CovidTestsGenerator.Contracts</AssemblyName>
+		<RootNamespace>CTG.CovidTestsGenerator.Contracts</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

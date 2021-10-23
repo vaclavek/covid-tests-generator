@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
 using Havit.Blazor.Grpc.Client.ServerExceptions;
-using Havit.NewProjectTemplate.Resources;
+using CTG.CovidTestsGenerator.Resources;
 using Microsoft.Extensions.Localization;
 
-namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc
+namespace CTG.CovidTestsGenerator.Web.Client.Infrastructure.Grpc
 {
 	public class HxMessengerOperationFailedExceptionGrpcClientListener : IOperationFailedExceptionGrpcClientListener
 	{

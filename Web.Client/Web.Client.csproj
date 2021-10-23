@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
-		<AssemblyName>Havit.NewProjectTemplate.Web.Client</AssemblyName>
-		<RootNamespace>Havit.NewProjectTemplate.Web.Client</RootNamespace>
+		<AssemblyName>CTG.CovidTestsGenerator.Web.Client</AssemblyName>
+		<RootNamespace>CTG.CovidTestsGenerator.Web.Client</RootNamespace>
 		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
 	</PropertyGroup>
 

@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
 		<IsPackable>false</IsPackable>
-		<AssemblyName>Havit.NewProjectTemplate.Facades.Tests</AssemblyName>
-		<RootNamespace>Havit.NewProjectTemplate.Facades.Tests</RootNamespace>
+		<AssemblyName>CTG.CovidTestsGenerator.Facades.Tests</AssemblyName>
+		<RootNamespace>CTG.CovidTestsGenerator.Facades.Tests</RootNamespace>
 		<PublishDir>obj\$(Configuration)\publish</PublishDir>
 	</PropertyGroup>
 

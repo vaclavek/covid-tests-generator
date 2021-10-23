@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-	  <AssemblyName>Havit.NewProjectTemplate.Resources</AssemblyName>
-	  <RootNamespace>Havit.NewProjectTemplate.Resources</RootNamespace>
+	  <AssemblyName>CTG.CovidTestsGenerator.Resources</AssemblyName>
+	  <RootNamespace>CTG.CovidTestsGenerator.Resources</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

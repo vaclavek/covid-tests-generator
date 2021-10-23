@@ -3,8 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <AssemblyName>Havit.NewProjectTemplate.Utility</AssemblyName>
-    <RootNamespace>Havit.NewProjectTemplate.Utility</RootNamespace>
+    <AssemblyName>CTG.CovidTestsGenerator.Utility</AssemblyName>
+    <RootNamespace>CTG.CovidTestsGenerator.Utility</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,9 +33,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-    <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
     <ProjectReference Include="..\DependencyInjection\DependencyInjection.csproj" />
-    <ProjectReference Include="..\Model\Model.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 

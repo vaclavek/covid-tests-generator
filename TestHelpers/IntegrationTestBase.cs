@@ -1,28 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Havit.Data.EntityFrameworkCore;
-using Havit.Data.Patterns.DataSeeds;
-using Havit.NewProjectTemplate.DataLayer.Seeds.Core;
-using Microsoft.EntityFrameworkCore;
+using CTG.CovidTestsGenerator.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Havit.NewProjectTemplate.DependencyInjection;
 
-namespace Havit.NewProjectTemplate.TestHelpers
+namespace CTG.CovidTestsGenerator.TestHelpers
 {
 	public class IntegrationTestBase
 	{
 		private IDisposable scope;
 
 		protected IServiceProvider ServiceProvider { get; private set; }
-
-		protected virtual bool UseLocalDb => false;
-		protected virtual bool DeleteDbData => true;
-
-		protected virtual bool SeedData => true;
 
 		[TestInitialize]
 		public virtual void TestInitialize()
@@ -31,22 +18,6 @@ namespace Havit.NewProjectTemplate.TestHelpers
 			IServiceProvider serviceProvider = services.BuildServiceProvider();
 
 			scope = serviceProvider.CreateScope();
-
-			var dbContext = serviceProvider.GetRequiredService<IDbContext>();
-			if (DeleteDbData)
-			{
-				dbContext.Database.EnsureDeleted();
-			}
-			if (this.UseLocalDb)
-			{
-				dbContext.Database.Migrate();
-			}
-
-			if (this.SeedData)
-			{
-				var dataSeedRunner = serviceProvider.GetRequiredService<IDataSeedRunner>();
-				dataSeedRunner.SeedData<CoreProfile>();
-			}
 
 			this.ServiceProvider = serviceProvider;
 		}
@@ -65,7 +36,7 @@ namespace Havit.NewProjectTemplate.TestHelpers
 		protected virtual IServiceCollection CreateServiceCollection()
 		{
 			IServiceCollection services = new ServiceCollection();
-			services.ConfigureForTests(useInMemoryDb: !UseLocalDb);
+			services.ConfigureForTests();
 
 			return services;
 		}

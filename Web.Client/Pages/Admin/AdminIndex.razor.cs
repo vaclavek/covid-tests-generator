@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Blazored.LocalStorage;
+using CTG.CovidTestsGenerator.Contracts.System;
+using CTG.CovidTestsGenerator.Web.Client.Resources;
+using CTG.CovidTestsGenerator.Web.Client.Resources.Pages.Admin;
 using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
-using Havit.NewProjectTemplate.Contracts.System;
-using Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components;
-using Havit.NewProjectTemplate.Web.Client.Resources;
-using Havit.NewProjectTemplate.Web.Client.Resources.Pages.Admin;
 using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.Localization;
 
-namespace Havit.NewProjectTemplate.Web.Client.Pages.Admin
+namespace CTG.CovidTestsGenerator.Web.Client.Pages.Admin
 {
 	public partial class AdminIndex : ComponentBase
 	{
@@ -23,8 +17,6 @@ namespace Havit.NewProjectTemplate.Web.Client.Pages.Admin
 		[Inject] protected ILocalStorageService LocalStorageService { get; set; }
 		[Inject] protected INavigationLocalizer NavigationLocalizer { get; set; }
 		[Inject] protected IAdminIndexLocalizer AdmninIndexLocalizer { get; set; }
-
-		private DataSeeds dataSeedsComponent;
 
 		private async Task RemoveCultureFromLocalStorage()
 		{

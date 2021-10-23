@@ -7,7 +7,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.HealthChecks
+namespace CTG.CovidTestsGenerator.Web.Server.Infrastructure.HealthChecks
 {
 	public class HealthCheckWriter
 	{

@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Havit.NewProjectTemplate.Services.Jobs
+namespace CTG.CovidTestsGenerator.Services.Jobs
 {
 	public interface IRunnableJob
 	{

@@ -2,28 +2,22 @@
 using System.IO;
 using System.Runtime.CompilerServices;
 using Azure.Identity;
-using Havit.Data.EntityFrameworkCore.Patterns.DependencyInjection;
-using Havit.Data.EntityFrameworkCore.Patterns.UnitOfWorks.EntityValidation;
+using CTG.CovidTestsGenerator.DependencyInjection.ConfigrationOptions;
+using CTG.CovidTestsGenerator.Services.Infrastructure;
+using CTG.CovidTestsGenerator.Services.Infrastructure.FileStorages;
+using CTG.CovidTestsGenerator.Services.Jobs;
+using CTG.CovidTestsGenerator.Services.TimeServices;
 using Havit.Extensions.DependencyInjection;
 using Havit.Extensions.DependencyInjection.Abstractions;
-using Havit.NewProjectTemplate.DataLayer.DataSources.Common;
-using Havit.NewProjectTemplate.DataLayer.Repositories.Common;
-using Havit.NewProjectTemplate.DependencyInjection.ConfigrationOptions;
-using Havit.NewProjectTemplate.Entity;
-using Havit.NewProjectTemplate.Services.Infrastructure;
-using Havit.NewProjectTemplate.Services.Infrastructure.FileStorages;
-using Havit.NewProjectTemplate.Services.Jobs;
-using Havit.NewProjectTemplate.Services.TimeServices;
 using Havit.Services.Azure.FileStorage;
 using Havit.Services.Caching;
 using Havit.Services.FileStorage;
 using Havit.Services.TimeServices;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Havit.NewProjectTemplate.DependencyInjection
+namespace CTG.CovidTestsGenerator.DependencyInjection
 {
 	public static class ServiceCollectionExtensions
 	{
@@ -59,7 +53,7 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 		}
 
 		[MethodImpl(MethodImplOptions.NoInlining)]
-		public static IServiceCollection ConfigureForTests(this IServiceCollection services, bool useInMemoryDb = true)
+		public static IServiceCollection ConfigureForTests(this IServiceCollection services)
 		{
 			string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Developement";
 
@@ -73,7 +67,7 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 			{
 				DatabaseConnectionString = configuration.GetConnectionString("Database"),
 				ServiceProfiles = new[] { ServiceAttribute.DefaultProfile },
-				UseInMemoryDb = useInMemoryDb,
+				UseInMemoryDb = true,
 			};
 
 			return services.ConfigureForAll(installConfiguration);
@@ -82,7 +76,6 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		private static IServiceCollection ConfigureForAll(this IServiceCollection services, InstallConfiguration installConfiguration)
 		{
-			InstallHavitEntityFramework(services, installConfiguration);
 			InstallHavitServices(services);
 			InstallByServiceAttribute(services, installConfiguration);
 			InstallAuthorizationHandlers(services);
@@ -93,25 +86,9 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 			return services;
 		}
 
-		private static void InstallHavitEntityFramework(IServiceCollection services, InstallConfiguration configuration)
-		{
-			DbContextOptions options = configuration.UseInMemoryDb
-				? new DbContextOptionsBuilder<NewProjectTemplateDbContext>().UseInMemoryDatabase(nameof(NewProjectTemplateDbContext)).Options
-				: new DbContextOptionsBuilder<NewProjectTemplateDbContext>().UseSqlServer(configuration.DatabaseConnectionString, c => c.MaxBatchSize(30)).Options;
-
-			services.WithEntityPatternsInstaller()
-				.AddEntityPatterns()
-				//.AddLocalizationServices<Language>()
-				.AddDbContext<NewProjectTemplateDbContext>(options)
-				.AddDataLayer(typeof(IApplicationSettingsDataSource).Assembly)
-				.AddLookupService<ICountryByIsoCodeLookupService, CountryByIsoCodeLookupService>();
-
-			services.AddSingleton<IEntityValidator<object>, ValidatableObjectEntityValidator>();
-		}
-
 		private static void InstallHavitServices(IServiceCollection services)
 		{
-			// HAVIT .NET Framework Extensions
+			//  .NET Framework Extensions
 			services.AddSingleton<ITimeService, ApplicationTimeService>();
 			services.AddSingleton<ICacheService, MemoryCacheService>();
 			services.AddSingleton(new MemoryCacheServiceOptions { UseCacheDependenciesSupport = false });
@@ -119,14 +96,13 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 
 		private static void InstallByServiceAttribute(IServiceCollection services, InstallConfiguration configuration)
 		{
-			services.AddByServiceAttribute(typeof(Havit.NewProjectTemplate.DataLayer.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
-			services.AddByServiceAttribute(typeof(Havit.NewProjectTemplate.Services.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
-			services.AddByServiceAttribute(typeof(Havit.NewProjectTemplate.Facades.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
+			services.AddByServiceAttribute(typeof(CTG.CovidTestsGenerator.Services.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
+			services.AddByServiceAttribute(typeof(CTG.CovidTestsGenerator.Facades.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
 		}
 
 		private static void InstallAuthorizationHandlers(IServiceCollection services)
 		{
-			services.Scan(scan => scan.FromAssemblyOf<Havit.NewProjectTemplate.Services.Properties.AssemblyInfo>()
+			services.Scan(scan => scan.FromAssemblyOf<CTG.CovidTestsGenerator.Services.Properties.AssemblyInfo>()
 				.AddClasses(classes => classes.AssignableTo<IAuthorizationHandler>())
 				.As<IAuthorizationHandler>()
 				.WithScopedLifetime()

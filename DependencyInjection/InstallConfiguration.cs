@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Havit.NewProjectTemplate.DependencyInjection
+namespace CTG.CovidTestsGenerator.DependencyInjection
 {
 	internal class InstallConfiguration
 	{

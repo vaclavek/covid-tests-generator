@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Havit.Services.FileStorage;
 
-namespace Havit.NewProjectTemplate.Services.Infrastructure.FileStorages
+namespace CTG.CovidTestsGenerator.Services.Infrastructure.FileStorages
 {
 	public class ApplicationFileStorage : FileStorageContext
 	{

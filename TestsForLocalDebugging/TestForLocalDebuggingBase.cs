@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Havit.NewProjectTemplate.TestHelpers;
+using CTG.CovidTestsGenerator.TestHelpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Havit.NewProjectTemplate.TestsForLocalDebugging
+namespace CTG.CovidTestsGenerator.TestsForLocalDebugging
 {
 	/// <summary>
 	/// Bázový třída pro testy.

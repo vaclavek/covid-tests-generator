@@ -1,4 +1,4 @@
-﻿namespace Havit.NewProjectTemplate.Services.Jobs
+﻿namespace CTG.CovidTestsGenerator.Services.Jobs
 {
 	public static class Jobs
 	{

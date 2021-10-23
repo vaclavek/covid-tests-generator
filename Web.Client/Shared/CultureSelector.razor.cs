@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components;
 
-namespace Havit.NewProjectTemplate.Web.Client.Shared
+namespace CTG.CovidTestsGenerator.Web.Client.Shared
 {
 	public partial class CultureSelector : ComponentBase
 	{

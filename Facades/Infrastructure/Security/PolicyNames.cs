@@ -1,4 +1,4 @@
-﻿namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security
+﻿namespace CTG.CovidTestsGenerator.Facades.Infrastructure.Security
 {
 	public static class PolicyNames
 	{

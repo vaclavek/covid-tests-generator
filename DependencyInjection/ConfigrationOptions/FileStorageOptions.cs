@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.NewProjectTemplate.DependencyInjection.ConfigrationOptions
+namespace CTG.CovidTestsGenerator.DependencyInjection.ConfigrationOptions
 {
 	public class FileStorageOptions
 	{
