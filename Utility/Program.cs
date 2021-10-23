@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using CTG.CovidTestsGenerator.DependencyInjection;
 using CTG.CovidTestsGenerator.Services.Jobs;
-using Hangfire.Console.Extensions;
 using Havit.AspNetCore.ExceptionMonitoring.Services;
 using Havit.Diagnostics.Contracts;
 using Microsoft.ApplicationInsights;
@@ -86,7 +85,6 @@ namespace CTG.CovidTestsGenerator.Utility
 			services.AddMemoryCache();
 
 			services.AddLogging(builder => builder.AddSimpleConsole(options => options.TimestampFormat = "[HH:mm:ss] "));
-			services.AddHangfireConsoleExtensions(); // adds support for Hangfire jobs logging  to a dashboard using ILogger<T> (.UseConsole() in hangfire configuration is required!)
 			services.AddExceptionMonitoring(configuration);
 
 			services.ConfigureForUtility(configuration);

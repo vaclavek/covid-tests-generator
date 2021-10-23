@@ -55,9 +55,6 @@ namespace CTG.CovidTestsGenerator.Web.Server
 
 			// Health checks
 			services.AddHealthChecks();
-
-			// Hangfire
-			services.AddCustomizedHangfire(configuration);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -99,14 +96,6 @@ namespace CTG.CovidTestsGenerator.Web.Server
 					AllowCachingResponses = false,
 					ResponseWriter = HealthCheckWriter.WriteResponse
 				});
-
-				//endpoints.MapHangfireDashboard("/hangfire", new DashboardOptions
-				//{
-				//	Authorization = new List<IDashboardAuthorizationFilter>() { }, // see https://sahansera.dev/securing-hangfire-dashboard-with-endpoint-routing-auth-policy-aspnetcore/
-				//	DisplayStorageConnectionString = false,
-				//	DashboardTitle = "CovidTestsGenerator - Jobs",
-				//	StatsPollingInterval = 60_000 // once a minute
-				//});
 			});
 		}
 	}
