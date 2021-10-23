@@ -31,8 +31,6 @@ namespace CTG.CovidTestsGenerator.Web.Server
 
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-			services.AddDatabaseDeveloperPageExceptionFilter();
-
 			services.AddOptions();
 
 			services.AddCustomizedMailing(configuration);
@@ -63,7 +61,6 @@ namespace CTG.CovidTestsGenerator.Web.Server
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
-				app.UseMigrationsEndPoint();
 				app.UseWebAssemblyDebugging();
 			}
 			else
