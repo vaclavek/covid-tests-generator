@@ -13,7 +13,6 @@ using Havit.Services.Azure.FileStorage;
 using Havit.Services.Caching;
 using Havit.Services.FileStorage;
 using Havit.Services.TimeServices;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -78,7 +77,6 @@ namespace CTG.CovidTestsGenerator.DependencyInjection
 		{
 			InstallHavitServices(services);
 			InstallByServiceAttribute(services, installConfiguration);
-			InstallAuthorizationHandlers(services);
 			InstallFileServices(services, installConfiguration);
 
 			services.AddMemoryCache();
@@ -98,15 +96,6 @@ namespace CTG.CovidTestsGenerator.DependencyInjection
 		{
 			services.AddByServiceAttribute(typeof(CTG.CovidTestsGenerator.Services.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
 			services.AddByServiceAttribute(typeof(CTG.CovidTestsGenerator.Facades.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
-		}
-
-		private static void InstallAuthorizationHandlers(IServiceCollection services)
-		{
-			services.Scan(scan => scan.FromAssemblyOf<CTG.CovidTestsGenerator.Services.Properties.AssemblyInfo>()
-				.AddClasses(classes => classes.AssignableTo<IAuthorizationHandler>())
-				.As<IAuthorizationHandler>()
-				.WithScopedLifetime()
-			);
 		}
 
 		private static void InstallFileServices(IServiceCollection services, InstallConfiguration installConfiguration)

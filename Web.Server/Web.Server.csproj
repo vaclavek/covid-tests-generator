@@ -27,7 +27,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.4.4" />
-		<PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="5.0.11" />
 	</ItemGroup>
 
 	<Target Name="CopyMissingBlazorContent" BeforeTargets="_CopyResolvedFilesToPublishAlways">
