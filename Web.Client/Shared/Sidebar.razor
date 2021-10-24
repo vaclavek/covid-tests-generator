@@ -3,15 +3,12 @@
 
 <HxSidebar CssClass="sticky-top">
 	<HeaderTemplate>
-		<HxSidebarBrand BrandName="CovidTestsGenerator" BrandNameShort="NP" />
+		<HxSidebarBrand BrandName="CovidTestsGenerator" BrandNameShort="CTG" />
 	</HeaderTemplate>
 
 	<ItemsTemplate>
 		<HxSidebarItem Text="Dashboard" Href="@Routes.Home" Icon="@BootstrapIcon.Columns" Match="NavLinkMatch.All" />
 		<HxSidebarItem Text="Nový test" Href="@Routes.New" Icon="@BootstrapIcon.PlusSquare" Match="NavLinkMatch.All" />
-
-		<HxSidebarItem Text="@NavigationLocalizer.Administration" Href="@Routes.Administration.Index" Icon="@BootstrapIcon.Gear" />
-		<HxSidebarItem Text="Development" Href="/development" Icon="@BootstrapIcon.FileCode" />
 	</ItemsTemplate>
 
 	<FooterTemplate>
