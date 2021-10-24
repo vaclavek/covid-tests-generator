@@ -27,6 +27,7 @@
 		<PackageReference Include="Havit.Blazor.Grpc.Client.WebAssembly" Version="1.0.7" />
 		<PackageReference Include="Havit.Extensions.Localization" Version="1.0.3" />
 		<PackageReference Include="Havit.SourceGenerators.StrongApiStringLocalizers" Version="1.0.6" />
+		<PackageReference Include="itext7" Version="7.1.16" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.11" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.11" PrivateAssets="all" />
 	</ItemGroup>
@@ -34,6 +35,12 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Contracts\Contracts.csproj" />
 		<ProjectReference Include="..\Resources\Resources.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="wwwroot\js\pdfAction.js">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 
 </Project>

@@ -1,0 +1,92 @@
+﻿@attribute [Route(Routes.New)]
+
+<EditForm Model="@model">
+	<DataAnnotationsValidator />
+
+	<HxCard CssClass="mb-3">
+		<BodyTemplate>
+			<HxCardTitle>Povinné údaje</HxCardTitle>
+			<HxCardText>
+				<div class="mb-3">
+					<HxInputText Label="Jméno a příjmení"								 
+								 @bind-Value="@model.FullName" />
+				</div>
+
+				<div class="mb-3">
+					<HxInputText Label="Trvalá adresa"
+								 @bind-Value="@model.PernamentAddress" />
+				</div>
+
+				<div class="mb-3">
+					<HxInputDate Label="Datum narození"
+								 CalendarIcon="BootstrapIcon.Calendar"
+								 MaxDate="@DateTime.Today"
+								 @bind-Value="@model.DateOfBirth" />
+				</div>
+
+			</HxCardText>
+		</BodyTemplate>
+	</HxCard>
+
+	<HxCard CssClass="mb-3">
+		<BodyTemplate>
+			<HxCardTitle>Volitelné údaje</HxCardTitle>
+			<HxCardText>
+				<div class="mb-3">
+					<HxInputText Label="Korespondenční adresa"
+								 @bind-Value="@model.CurrentAddress" />
+				</div>
+
+				<div class="mb-3">
+					<HxInputText Label="Telefon"
+								 Type="InputType.Tel"
+								 @bind-Value="@model.PhoneNumber" />
+				</div>
+
+				<div class="mb-3">
+					<HxInputText Type="InputType.Email"
+								 Label="E-mail"
+								 @bind-Value="@model.Email" />
+				</div>
+
+				<div class="mb-3">
+					<HxInputText Label="Číslo dokladu (pas nebo občanský průkaz)"
+								 @bind-Value="@model.PassportOrIdNumber" />
+				</div>
+
+			</HxCardText>
+		</BodyTemplate>
+	</HxCard>
+
+	<HxCard CssClass="mb-3">
+		<BodyTemplate>
+			<HxCardTitle>Údaje o testu</HxCardTitle>
+			<HxCardText>
+				<div class="mb-3">
+					<HxInputDate Label="Datum a čas testu"
+								 CalendarIcon="BootstrapIcon.Calendar"
+								 UseDefaultDates="false"
+								 @bind-Value="@model.TestDateTime" />
+				</div>
+
+				<div class="mb-3">
+					<HxInputText Label="Místo testu"
+								 @bind-Value="@model.TestPlace" />
+				</div>
+
+				<div class="mb-3">
+					<HxSelect Label="Typ testu"
+							  TItem="TestType"
+							  TValue="bool"
+							  Data="@testTypes"
+							  TextSelector="@(x => x.Title)"
+							  ValueSelector="@(x => x.Value)"
+							  Nullable="false"
+							  @bind-Value="@model.TestType" />
+				</div>
+			</HxCardText>
+			<HxSubmit Text="Vytvořit test" Color="ThemeColor.Primary" OnClick="GenerateAsync" />
+		</BodyTemplate>
+	</HxCard>
+
+</EditForm>

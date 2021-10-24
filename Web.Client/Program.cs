@@ -8,6 +8,7 @@ using Blazored.LocalStorage;
 using CTG.CovidTestsGenerator.Contracts;
 using CTG.CovidTestsGenerator.Contracts.System;
 using CTG.CovidTestsGenerator.Web.Client.Infrastructure.Grpc;
+using CTG.CovidTestsGenerator.Web.Client.Services;
 using FluentValidation;
 using Havit.Blazor.Components.Web;
 using Havit.Blazor.Grpc.Client;
@@ -42,6 +43,8 @@ namespace CTG.CovidTestsGenerator.Web.Client
 			SetHxComponents();
 
 			AddGrpcClient(builder);
+
+			builder.Services.AddScoped<IPdfGenerator, PdfGenerator>();
 
 			WebAssemblyHost webAssemblyHost = builder.Build();
 

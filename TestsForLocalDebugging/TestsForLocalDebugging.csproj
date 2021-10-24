@@ -16,10 +16,12 @@
   </ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Contracts\Contracts.csproj" />
 		<ProjectReference Include="..\Facades\Facades.csproj" />
 		<ProjectReference Include="..\Services\Services.csproj" />
 		<ProjectReference Include="..\TestHelpers\TestHelpers.csproj" />
 		<ProjectReference Include="..\DependencyInjection\DependencyInjection.csproj" />
+		<ProjectReference Include="..\Web.Client\Web.Client.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

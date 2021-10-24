@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CTG.CovidTestsGenerator.Web.Client
+﻿namespace CTG.CovidTestsGenerator.Web.Client
 {
 	public static class Routes
 	{
 		public const string Home = "/";
+		public const string New = "/new";
 
 		public static class Administration
 		{
