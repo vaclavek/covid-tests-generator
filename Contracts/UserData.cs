@@ -28,5 +28,8 @@ namespace CTG.CovidTestsGenerator.Contracts
 		public bool TestType { get; set; }
 
 		public string TestPlace { get; set; }
+
+		public string SavedUserProfileTitle => $"{FullName} ({DateOfBirth.Value:dd.MM.yyyy}), {PernamentAddress}";
+		public string SavedUserProfileKey => $"{FullName}_{DateOfBirth.Value:dd.MM.yyyy}_{PernamentAddress}";
 	}
 }
