@@ -5,20 +5,20 @@
 
 	<HxCard CssClass="mb-3">
 		<BodyTemplate>
-			<HxCardTitle>Povinné údaje</HxCardTitle>
+		  <HxCardTitle>@NewLocalizer.MandatoryData</HxCardTitle>
 			<HxCardText>
 				<div class="mb-3">
-					<HxInputText Label="Jméno a příjmení"								 
+					<HxInputText Label="@NewLocalizer.FirstAndSecondName"								 
 								 @bind-Value="@model.FullName" />
 				</div>
 
 				<div class="mb-3">
-					<HxInputText Label="Trvalá adresa"
+					<HxInputText Label="@NewLocalizer.PermanentAddress"
 								 @bind-Value="@model.PernamentAddress" />
 				</div>
 
 				<div class="mb-3">
-					<HxInputDate Label="Datum narození"
+					<HxInputDate Label="@NewLocalizer.DateOfBirth"
 								 CalendarIcon="BootstrapIcon.Calendar"
 								 MaxDate="@DateTime.Today"
 								 @bind-Value="@model.DateOfBirth" />
@@ -30,27 +30,27 @@
 
 	<HxCard CssClass="mb-3">
 		<BodyTemplate>
-			<HxCardTitle>Volitelné údaje</HxCardTitle>
+		  <HxCardTitle>@NewLocalizer.OptionalData</HxCardTitle>
 			<HxCardText>
 				<div class="mb-3">
-					<HxInputText Label="Korespondenční adresa"
+					<HxInputText Label="@NewLocalizer.CurrentAddress"
 								 @bind-Value="@model.CurrentAddress" />
 				</div>
 
 				<div class="mb-3">
-					<HxInputText Label="Telefon"
+					<HxInputText Label="@NewLocalizer.PhoneNumber"
 								 Type="InputType.Tel"
 								 @bind-Value="@model.PhoneNumber" />
 				</div>
 
 				<div class="mb-3">
-					<HxInputText Type="InputType.Email"
-								 Label="E-mail"
+					<HxInputText Label="@NewLocalizer.Email"
+								 Type="InputType.Email"								 
 								 @bind-Value="@model.Email" />
 				</div>
 
 				<div class="mb-3">
-					<HxInputText Label="Číslo dokladu (pas nebo občanský průkaz)"
+					<HxInputText Label="@NewLocalizer.PassportOrIdNumber"
 								 @bind-Value="@model.PassportOrIdNumber" />
 				</div>
 
@@ -60,22 +60,22 @@
 
 	<HxCard CssClass="mb-3">
 		<BodyTemplate>
-			<HxCardTitle>Údaje o testu</HxCardTitle>
+		  <HxCardTitle>@NewLocalizer.TestData</HxCardTitle>
 			<HxCardText>
 				<div class="mb-3">
-					<HxInputDate Label="Datum a čas testu"
+					<HxInputDate Label="@NewLocalizer.TestDateTime"
 								 CalendarIcon="BootstrapIcon.Calendar"
 								 UseDefaultDates="false"
 								 @bind-Value="@model.TestDateTime" />
 				</div>
 
 				<div class="mb-3">
-					<HxInputText Label="Místo testu"
+					<HxInputText Label="@NewLocalizer.TestPlace"
 								 @bind-Value="@model.TestPlace" />
 				</div>
 
 				<div class="mb-3">
-					<HxSelect Label="Typ testu"
+					<HxSelect Label="@NewLocalizer.TestType"
 							  TItem="TestType"
 							  TValue="bool"
 							  Data="@testTypes"
@@ -85,7 +85,7 @@
 							  @bind-Value="@model.TestType" />
 				</div>
 			</HxCardText>
-			<HxSubmit Text="Vytvořit test" Color="ThemeColor.Primary" OnClick="GenerateAsync" />
+			<HxSubmit Text="@NewLocalizer.CreateTest" Color="ThemeColor.Primary" OnClick="GenerateAsync" />
 		</BodyTemplate>
 	</HxCard>
 

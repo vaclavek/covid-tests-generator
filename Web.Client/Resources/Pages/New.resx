@@ -117,10 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Dashboard" xml:space="preserve">
-    <value>Dashboard</value>
+  <data name="CreateTest" xml:space="preserve">
+    <value>Create test</value>
   </data>
-  <data name="NewTest" xml:space="preserve">
-    <value>New test</value>
+  <data name="CurrentAddress" xml:space="preserve">
+    <value>Current address</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>Date of birth</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="FirstAndSecondName" xml:space="preserve">
+    <value>Firstname and surname</value>
+  </data>
+  <data name="MandatoryData" xml:space="preserve">
+    <value>Mandatory data</value>
+  </data>
+  <data name="Negative" xml:space="preserve">
+    <value>Negative</value>
+  </data>
+  <data name="OptionalData" xml:space="preserve">
+    <value>Optional data</value>
+  </data>
+  <data name="PassportOrIdNumber" xml:space="preserve">
+    <value>Document number (passport or ID card)</value>
+  </data>
+  <data name="PermanentAddress" xml:space="preserve">
+    <value>Permanent address</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="Positive" xml:space="preserve">
+    <value>Positive</value>
+  </data>
+  <data name="TestData" xml:space="preserve">
+    <value>Test data</value>
+  </data>
+  <data name="TestDateTime" xml:space="preserve">
+    <value>Test date and time</value>
+  </data>
+  <data name="TestPlace" xml:space="preserve">
+    <value>Test place</value>
+  </data>
+  <data name="TestType" xml:space="preserve">
+    <value>Test type</value>
   </data>
 </root>
