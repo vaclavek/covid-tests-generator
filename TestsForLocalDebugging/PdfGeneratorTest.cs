@@ -12,11 +12,12 @@ namespace CTG.CovidTestsGenerator.TestsForLocalDebugging
 	public class PdfGeneratorTest
 	{
 		[TestMethod]
+		[Ignore]
 		public async Task TestAsync()
 		{
 			var userData = new UserData
 			{
-				FullName = "Ondřej Václavek",
+				FullName = "Jan Novák",
 				PernamentAddress = "Brněnská 123, 120 00 Praha - Nové Město",
 				CurrentAddress = "Pražské předměstí 123, 621 00 Brno - Staré Město",
 				DateOfBirth = new DateTime(2000, 12, 31),
