@@ -2,23 +2,24 @@
 
 <EditForm Model="@model">
 	<DataAnnotationsValidator />
+    <FluentValidationValidator />
 
 	<HxCard CssClass="mb-3">
 		<BodyTemplate>
 		  <HxCardTitle>@NewLocalizer.MandatoryData</HxCardTitle>
 			<HxCardText>
 				<div class="mb-3">
-					<HxInputText Label="@NewLocalizer.FirstAndSecondName"								 
+					<HxInputText Label="@UserDataLocalizer.FirstAndSecondName"								 
 								 @bind-Value="@model.FullName" />
 				</div>
 
 				<div class="mb-3">
-					<HxInputText Label="@NewLocalizer.PermanentAddress"
-								 @bind-Value="@model.PernamentAddress" />
+					<HxInputText Label="@UserDataLocalizer.PermanentAddress"
+								 @bind-Value="@model.PermanentAddress" />
 				</div>
 
 				<div class="mb-3">
-					<HxInputDate Label="@NewLocalizer.DateOfBirth"
+					<HxInputDate Label="@UserDataLocalizer.DateOfBirth"
 								 CalendarIcon="BootstrapIcon.Calendar"
 								 MaxDate="@DateTime.Today"
 								 @bind-Value="@model.DateOfBirth" />
@@ -63,7 +64,7 @@
 		  <HxCardTitle>@NewLocalizer.TestData</HxCardTitle>
 			<HxCardText>
 				<div class="mb-3">
-					<HxInputDate Label="@NewLocalizer.TestDateTime"
+					<HxInputDate Label="@UserDataLocalizer.TestDateTime"
 								 CalendarIcon="BootstrapIcon.Calendar"
 								 UseDefaultDates="false"
 								 @bind-Value="@model.TestDateTime" />
@@ -85,7 +86,7 @@
 							  @bind-Value="@model.TestType" />
 				</div>
 			</HxCardText>
-			<HxSubmit Text="@NewLocalizer.CreateTest" Color="ThemeColor.Primary" OnClick="GenerateAsync" />
+			<HxSubmit Text="@NewLocalizer.CreateTest" Color="ThemeColor.Primary" OnValidClick="GenerateAsync" />
 		</BodyTemplate>
 	</HxCard>
 

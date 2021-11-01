@@ -117,40 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CreateTest" xml:space="preserve">
-    <value>Create test</value>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>Datum narození</value>
   </data>
-  <data name="CurrentAddress" xml:space="preserve">
-    <value>Current address</value>
+  <data name="DefaultCurrentAddress" xml:space="preserve">
+    <value>Brněnská 456, 120 00 Praha 2 - Nové Město</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>E-mail</value>
+  <data name="DefaultEmail" xml:space="preserve">
+    <value>toto.je.muj@email.cz</value>
   </data>
-  <data name="MandatoryData" xml:space="preserve">
-    <value>Mandatory data</value>
+  <data name="DefaultFullName" xml:space="preserve">
+    <value>Ondřej Václavek</value>
   </data>
-  <data name="Negative" xml:space="preserve">
-    <value>Negative</value>
+  <data name="DefaultPermanentAddress" xml:space="preserve">
+    <value>Pražská 123, 580 05 Brno nad Oslavicí</value>
   </data>
-  <data name="OptionalData" xml:space="preserve">
-    <value>Optional data</value>
+  <data name="DefaultTestPlace" xml:space="preserve">
+    <value>Medical Testing s.r.o., AG CovidPoint, Želetavská ul., 140 00 Praha</value>
   </data>
-  <data name="PassportOrIdNumber" xml:space="preserve">
-    <value>Document number (passport or ID card)</value>
+  <data name="FirstAndSecondName" xml:space="preserve">
+    <value>Jméno a příjmení</value>
   </data>
-  <data name="PhoneNumber" xml:space="preserve">
-    <value>Phone number</value>
+  <data name="PermanentAddress" xml:space="preserve">
+    <value>Trvalá adresa</value>
   </data>
-  <data name="Positive" xml:space="preserve">
-    <value>Positive</value>
-  </data>
-  <data name="TestData" xml:space="preserve">
-    <value>Test data</value>
-  </data>
-  <data name="TestPlace" xml:space="preserve">
-    <value>Test place</value>
-  </data>
-  <data name="TestType" xml:space="preserve">
-    <value>Test type</value>
+  <data name="TestDateTime" xml:space="preserve">
+    <value>Datum a čas testu</value>
   </data>
 </root>

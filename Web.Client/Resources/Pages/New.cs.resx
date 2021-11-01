@@ -123,14 +123,8 @@
   <data name="CurrentAddress" xml:space="preserve">
     <value>Korespondenční adresa</value>
   </data>
-  <data name="DateOfBirth" xml:space="preserve">
-    <value>Datum narození</value>
-  </data>
   <data name="Email" xml:space="preserve">
     <value>E-mail</value>
-  </data>
-  <data name="FirstAndSecondName" xml:space="preserve">
-    <value>Jméno a příjmení</value>
   </data>
   <data name="MandatoryData" xml:space="preserve">
     <value>Povinné údaje</value>
@@ -144,9 +138,6 @@
   <data name="PassportOrIdNumber" xml:space="preserve">
     <value>Číslo dokladu (pas nebo občanský průkaz)</value>
   </data>
-  <data name="PermanentAddress" xml:space="preserve">
-    <value>Trvalá adresa</value>
-  </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Telefon</value>
   </data>
@@ -155,9 +146,6 @@
   </data>
   <data name="TestData" xml:space="preserve">
     <value>Údaje o testu</value>
-  </data>
-  <data name="TestDateTime" xml:space="preserve">
-    <value>Datum a čas testu</value>
   </data>
   <data name="TestPlace" xml:space="preserve">
     <value>Místo testu</value>
