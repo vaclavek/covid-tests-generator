@@ -132,6 +132,9 @@
   <data name="DefaultPermanentAddress" xml:space="preserve">
     <value>Pražská 123, 580 05 Brno nad Oslavicí</value>
   </data>
+  <data name="DefaultPhoneNumber" xml:space="preserve">
+    <value>+420 777 147 977</value>
+  </data>
   <data name="DefaultTestPlace" xml:space="preserve">
     <value>Medical Testing s.r.o., AG CovidPoint, Želetavská ul., 140 00 Praha</value>
   </data>
@@ -142,6 +145,6 @@
     <value>Trvalá adresa</value>
   </data>
   <data name="TestDateTime" xml:space="preserve">
-    <value>Datum a čas testu</value>
+    <value>Datum testu</value>
   </data>
 </root>

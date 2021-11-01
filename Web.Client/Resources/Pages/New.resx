@@ -147,6 +147,12 @@
   <data name="TestData" xml:space="preserve">
     <value>Test data</value>
   </data>
+  <data name="TestHour" xml:space="preserve">
+    <value>Hour of test</value>
+  </data>
+  <data name="TestMinute" xml:space="preserve">
+    <value>Minute of test</value>
+  </data>
   <data name="TestPlace" xml:space="preserve">
     <value>Test place</value>
   </data>

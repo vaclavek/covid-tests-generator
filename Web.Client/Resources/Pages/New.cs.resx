@@ -147,6 +147,12 @@
   <data name="TestData" xml:space="preserve">
     <value>Údaje o testu</value>
   </data>
+  <data name="TestHour" xml:space="preserve">
+    <value>Test proběhl v hodině</value>
+  </data>
+  <data name="TestMinute" xml:space="preserve">
+    <value>Test proběhl v minutě</value>
+  </data>
   <data name="TestPlace" xml:space="preserve">
     <value>Místo testu</value>
   </data>

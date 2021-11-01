@@ -23,7 +23,7 @@ namespace CTG.CovidTestsGenerator.TestsForLocalDebugging
 				Email = "toto.je.muj@email.cz",
 				PassportOrIdNumber = "231 451 321",
 				PhoneNumber = "+420 777 657 954",
-				TestDateTime = new DateTime(2021, 10, 24, 12, 13, 14),
+				TestDate = new DateTime(2021, 10, 24, 12, 13, 14),
 				TestType = false
 			};
 
