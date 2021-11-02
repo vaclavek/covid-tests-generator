@@ -26,7 +26,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --configuration Release --verbosity normal
     - name: Publish
-      run: dotnet publish --configuration Release --output drop
+      run: dotnet publish Web.Server --configuration Release --output drop
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.2
       with:
