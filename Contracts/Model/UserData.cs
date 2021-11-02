@@ -33,6 +33,14 @@ namespace CTG.CovidTestsGenerator.Contracts.Model
 		public bool TestType { get; set; } = false;
 		public string TestPlace { get; set; }
 
+		public string SavedUserProfileTitle => $"{FullName} ({DateOfBirth.Value:dd.MM.yyyy}), {PermanentAddress}";
+		public string SavedUserProfileKey => $"{FullName}_{DateOfBirth.Value:dd.MM.yyyy}_{PermanentAddress}";
+
+		public object Clone()
+		{
+			return this.MemberwiseClone();
+		}
+
 		public class UserDataDtoValidator : AbstractValidator<UserData>
 		{
 			public UserDataDtoValidator(IUserDataLocalizer userDataLocalizer)
