@@ -2,7 +2,7 @@
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-using CTG.CovidTestsGenerator.Contracts.Model;
+using CTG.CovidTestsGenerator.Contracts;
 using CTG.CovidTestsGenerator.Web.Client.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -12,12 +12,13 @@ namespace CTG.CovidTestsGenerator.TestsForLocalDebugging
 	public class PdfGeneratorTest
 	{
 		[TestMethod]
+		[Ignore]
 		public async Task TestAsync()
 		{
 			var userData = new UserData
 			{
-				FullName = "Ondřej Václavek",
-				PermanentAddress = "Brněnská 123, 120 00 Praha - Nové Město",
+				FullName = "Jan Novák",
+				PernamentAddress = "Brněnská 123, 120 00 Praha - Nové Město",
 				CurrentAddress = "Pražské předměstí 123, 621 00 Brno - Staré Město",
 				DateOfBirth = new DateTime(2000, 12, 31),
 				Email = "toto.je.muj@email.cz",

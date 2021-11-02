@@ -13,12 +13,22 @@ namespace CTG.CovidTestsGenerator.Contracts.Model
 		public string CurrentAddress { get; set; }
 
 		public DateTime? DateOfBirth { get; set; } = new DateTime(1995, 10, 31);
-		public string PhoneNumber { get; set; } = "+420 777 147 977";
+		public string PhoneNumber { get; set; }
 
 		public string Email { get; set; }
 		public string PassportOrIdNumber { get; set; } = "123 457 887";
 
-		public DateTime? TestDateTime { get; set; } = DateTime.Now;
+		public DateTime TestDateTime
+		{
+			get
+			{
+				Random r = new Random();
+				return new DateTime(TestDate.Year, TestDate.Month, TestDate.Day, TestHour, TestMinute, r.Next(0, 59));
+			}
+		}
+		public DateTime TestDate { get; set; } = DateTime.Now;
+		public int TestHour { get; set; } = 15;
+		public int TestMinute { get; set; } = 40;
 
 		public bool TestType { get; set; } = false;
 		public string TestPlace { get; set; }
@@ -41,7 +51,7 @@ namespace CTG.CovidTestsGenerator.Contracts.Model
 					.NotEmpty()
 					.WithName(userDataLocalizer.DateOfBirth);
 
-				RuleFor(c => c.TestDateTime)
+				RuleFor(c => c.TestDate)
 					.NotEmpty()
 					.WithName(userDataLocalizer.TestDateTime);
 			}

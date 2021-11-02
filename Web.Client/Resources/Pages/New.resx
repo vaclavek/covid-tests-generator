@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ClearAllProfiles" xml:space="preserve">
+    <value>Clear all profiles</value>
+  </data>
+  <data name="ClearProfile" xml:space="preserve">
+    <value>Clear selected profile</value>
+  </data>
   <data name="CreateTest" xml:space="preserve">
     <value>Create test</value>
   </data>
@@ -144,8 +150,20 @@
   <data name="Positive" xml:space="preserve">
     <value>Positive</value>
   </data>
+  <data name="SavedProfile" xml:space="preserve">
+    <value>Saved profile</value>
+  </data>
+  <data name="SavedProfiles" xml:space="preserve">
+    <value>Saved profiles</value>
+  </data>
   <data name="TestData" xml:space="preserve">
     <value>Test data</value>
+  </data>
+  <data name="TestHour" xml:space="preserve">
+    <value>Hour of test</value>
+  </data>
+  <data name="TestMinute" xml:space="preserve">
+    <value>Minute of test</value>
   </data>
   <data name="TestPlace" xml:space="preserve">
     <value>Test place</value>
