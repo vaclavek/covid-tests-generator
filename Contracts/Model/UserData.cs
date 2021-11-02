@@ -11,27 +11,25 @@ namespace CTG.CovidTestsGenerator.Contracts.Model
 		public string FullName { get; set; }
 		public string PermanentAddress { get; set; }
 		public string CurrentAddress { get; set; }
-
-		public DateTime? DateOfBirth { get; set; } = new DateTime(1995, 10, 31);
+		public DateTime? DateOfBirth { get; set; }
 		public string PhoneNumber { get; set; }
-
 		public string Email { get; set; }
-		public string PassportOrIdNumber { get; set; } = "123 457 887";
-
-		public DateTime TestDateTime
-		{
-			get
-			{
-				Random r = new Random();
-				return new DateTime(TestDate.Year, TestDate.Month, TestDate.Day, TestHour, TestMinute, r.Next(0, 59));
-			}
-		}
-		public DateTime TestDate { get; set; } = DateTime.Now;
-		public int TestHour { get; set; } = 15;
-		public int TestMinute { get; set; } = 40;
-
-		public bool TestType { get; set; } = false;
+		public string PassportOrIdNumber { get; set; }
+		public bool TestType { get; set; }
 		public string TestPlace { get; set; }
+
+		public DateTime TestDateTime => new DateTime(TestDate.Year, TestDate.Month, TestDate.Day, TestHour, TestMinute, new Random().Next(0, 59));
+		public DateTime TestDate { get; set; }
+		public int TestHour { get; set; }
+		public int TestMinute { get; set; }
+
+		public string SavedUserProfileTitle => $"{FullName} ({DateOfBirth.Value:dd.MM.yyyy}), {PermanentAddress}";
+		public string SavedUserProfileKey => $"{FullName}_{DateOfBirth.Value:dd.MM.yyyy}_{PermanentAddress}";
+
+		public object Clone()
+		{
+			return this.MemberwiseClone();
+		}
 
 		public class UserDataDtoValidator : AbstractValidator<UserData>
 		{
