@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
-using CTG.CovidTestsGenerator.Contracts;
 using CTG.CovidTestsGenerator.Contracts.Model;
 using CTG.CovidTestsGenerator.Resources;
 using CTG.CovidTestsGenerator.Web.Client.Resources.Pages;
@@ -45,10 +44,9 @@ namespace CTG.CovidTestsGenerator.Web.Client.Pages
 			}
 		}
 		private string _savedProfile;
-
 		private string NullText => GlobalLocalizer["SelectNull"].Value;
 
-		protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
 		{
 			testTypes.Add(new TestType { Value = false, Title = NewLocalizer.Negative });
 			testTypes.Add(new TestType { Value = true, Title = NewLocalizer.Positive });
@@ -103,6 +101,36 @@ namespace CTG.CovidTestsGenerator.Web.Client.Pages
 			var data = await PdfGenerator.GetPdfAsync(model);
 
 			await JsRuntime.InvokeVoidAsync("jsSaveAsFile", $"Test-{model.TestDateTime:yyyyMMdd}.pdf", Convert.ToBase64String(data));
+		}
+
+		private async Task LoadUserProfilesAsync()
+		{
+			// load from local storage, if some model has been already saved
+			SavedProfiles = await LocalStorage.GetItemAsync<ICollection<UserData>>(LocalStorageModelKey) ?? new List<UserData>();
+		}
+
+		private async Task SaveUserProfilesAsync()
+		{
+			// save to local storage
+			await LocalStorage.SetItemAsync(LocalStorageModelKey, SavedProfiles);
+		}
+
+		private async Task ClearAllLocalStoragesAsync()
+		{
+			await LocalStorage.RemoveItemAsync(LocalStorageModelKey);
+			SavedProfile = null;
+			await LoadUserProfilesAsync();
+		}
+
+		private async Task ClearSelectedLocalStorageAsync()
+		{
+			var profile = SavedProfiles.FirstOrDefault(x => x.SavedUserProfileKey == SavedProfile);
+			if (profile != null)
+			{
+				SavedProfile = null;
+				SavedProfiles.Remove(profile);
+				await SaveUserProfilesAsync();
+			}
 		}
 
 		private async Task LoadUserProfilesAsync()

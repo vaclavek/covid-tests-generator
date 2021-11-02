@@ -40,6 +40,42 @@
 	</HxCard>
 	}
 
+	@if (SavedProfiles != null && SavedProfiles.Count > 0)
+	{
+	<HxCard CssClass="mb-3">
+		<BodyTemplate>
+			<HxCardTitle>@NewLocalizer.SavedProfiles</HxCardTitle>
+			<HxCardText>
+				<div class="mb-3">
+					<HxSelect Label="@NewLocalizer.SavedProfile"
+							  TItem="UserData"
+							  TValue="string"
+							  Data="@SavedProfiles"
+							  TextSelector="@(x => x.SavedUserProfileTitle)"
+							  ValueSelector="@(x => x.SavedUserProfileKey)"
+							  @bind-Value="@SavedProfile"
+							  Nullable="true"
+							  NullText="@NullText"
+							  />
+				</div>
+
+				<div class="mb-3">
+					<HxButton Text="@NewLocalizer.ClearAllProfiles"
+							  Color="ThemeColor.Danger"
+							  OnClick="ClearAllLocalStoragesAsync" />
+
+					@if (!string.IsNullOrEmpty(SavedProfile))
+					{
+						<HxButton Text="@NewLocalizer.ClearProfile"
+								  Color="ThemeColor.Warning"
+								  OnClick="ClearSelectedLocalStorageAsync" />
+					}
+				</div>
+			</HxCardText>
+		</BodyTemplate>
+	</HxCard>
+	}
+
 	<HxCard CssClass="mb-3">
 		<BodyTemplate>
 		  <HxCardTitle>@NewLocalizer.MandatoryData</HxCardTitle>
