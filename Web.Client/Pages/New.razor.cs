@@ -19,7 +19,7 @@ namespace CTG.CovidTestsGenerator.Web.Client.Pages
 
 		private readonly List<TestType> testTypes = new();
 		private readonly List<TimeType> hourTypes = new();
-		private readonly List<TimeType> MinuteTypes = new();
+		private readonly List<TimeType> minuteTypes = new();
 
 		[Inject] public IJSRuntime JsRuntime { get; set; }
 		[Inject] public IPdfGenerator PdfGenerator { get; set; }
@@ -57,7 +57,7 @@ namespace CTG.CovidTestsGenerator.Web.Client.Pages
 			}
 			for (int minute = 0; minute <= 59; minute += 5)
 			{
-				MinuteTypes.Add(new TimeType { Value = minute, Title = minute.ToString("D2") });
+				minuteTypes.Add(new TimeType { Value = minute, Title = minute.ToString("D2") });
 			}
 
 #if DEBUG
