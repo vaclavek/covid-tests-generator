@@ -1,148 +1,152 @@
 ﻿@attribute [Route(Routes.New)]
 
 <EditForm Model="@model">
-	<DataAnnotationsValidator />
-    <FluentValidationValidator />	
+  <FluentValidationValidator />
 
-	@if (SavedProfiles != null && SavedProfiles.Count > 0)
-	{
-	<HxCard CssClass="mb-3">
-		<BodyTemplate>
-			<HxCardTitle>@NewLocalizer.SavedProfiles</HxCardTitle>
-			<HxCardText>
-				<div class="mb-3">
-					<HxSelect Label="@NewLocalizer.SavedProfile"
-							  TItem="UserData"
-							  TValue="string"
-							  Data="@SavedProfiles"
-							  TextSelector="@(x => x.SavedUserProfileTitle)"
-							  ValueSelector="@(x => x.SavedUserProfileKey)"
-							  @bind-Value="@SavedProfile"
-							  Nullable="true"
-							  NullText="@NullText"
-							  />
-				</div>
+  @if (SavedProfiles != null && SavedProfiles.Count > 0)
+  {
+    <HxCard CssClass="mb-3">
+      <BodyTemplate>
+        <HxCardTitle>@NewLocalizer.SavedProfiles</HxCardTitle>
+        <HxCardText>
+          <div class="mb-3">
+            <HxSelect Label="@NewLocalizer.SavedProfile"
+					  TItem="UserData"
+					  TValue="string"
+					  Data="@SavedProfiles"
+					  TextSelector="@(x => x.SavedUserProfileTitle)"
+					  ValueSelector="@(x => x.SavedUserProfileKey)"
+					  @bind-Value="@SavedProfile"
+					  Nullable="true"
+					  NullText="@NullText" />
+          </div>
 
-				<div class="mb-3">
-					<HxButton Text="@NewLocalizer.ClearAllProfiles"
-							  Color="ThemeColor.Danger"
-							  OnClick="ClearAllLocalStoragesAsync" />
+          <div class="mb-3">
+            <HxButton Text="@NewLocalizer.ClearAllProfiles"
+					  Color="ThemeColor.Danger"
+					  OnClick="ClearAllLocalStoragesAsync" />
 
-					@if (!string.IsNullOrEmpty(SavedProfile))
-					{
-						<HxButton Text="@NewLocalizer.ClearProfile"
-								  Color="ThemeColor.Warning"
-								  OnClick="ClearSelectedLocalStorageAsync" />
-					}
-				</div>
-			</HxCardText>
-		</BodyTemplate>
-	</HxCard>
-	}
+            @if (!string.IsNullOrEmpty(SavedProfile))
+			{
+              <HxButton Text="@NewLocalizer.ClearProfile"
+						Color="ThemeColor.Warning"
+						OnClick="ClearSelectedLocalStorageAsync" />
+			}
+          </div>
+        </HxCardText>
+      </BodyTemplate>
+    </HxCard>
+  }
 
-	<HxCard CssClass="mb-3">
-		<BodyTemplate>
-		  <HxCardTitle>@NewLocalizer.MandatoryData</HxCardTitle>
-			<HxCardText>
-				<div class="mb-3">
-					<HxInputText Label="@UserDataLocalizer.FirstAndSecondName"								 
-								 @bind-Value="@model.FullName" />
-				</div>
+  <HxCard CssClass="mb-3">
+    <BodyTemplate>
+      <HxCardTitle>@NewLocalizer.MandatoryData</HxCardTitle>
+      <HxCardText>
+        <div class="mb-3">
+          <HxInputText Label="@UserDataLocalizer.FirstAndSecondName"
+					   @bind-Value="@model.FullName" />
+        </div>
 
-				<div class="mb-3">
-					<HxInputText Label="@UserDataLocalizer.PermanentAddress"
-								 @bind-Value="@model.PermanentAddress" />
-				</div>
+        <div class="mb-3">
+          <HxInputText Label="@UserDataLocalizer.PermanentAddress"
+					   @bind-Value="@model.PermanentAddress" />
+        </div>
 
-				<div class="mb-3">
-					<HxInputDate Label="@UserDataLocalizer.DateOfBirth"
-								 CalendarIcon="BootstrapIcon.Calendar"
-								 MaxDate="@DateTime.Today"
-								 @bind-Value="@model.DateOfBirth" />
-				</div>
+        <div class="mb-3">
+          <HxInputDate Label="@UserDataLocalizer.DateOfBirth"
+					   CalendarIcon="BootstrapIcon.Calendar"
+					   MaxDate="@DateTime.Today"
+					   @bind-Value="@model.DateOfBirth" />
+        </div>
 
-			</HxCardText>
-		</BodyTemplate>
-	</HxCard>
+      </HxCardText>
+    </BodyTemplate>
+  </HxCard>
 
-	<HxCard CssClass="mb-3">
-		<BodyTemplate>
-		  <HxCardTitle>@NewLocalizer.OptionalData</HxCardTitle>
-			<HxCardText>
-				<div class="mb-3">
-					<HxInputText Label="@NewLocalizer.CurrentAddress"
-								 @bind-Value="@model.CurrentAddress" />
-				</div>
+  <HxCard CssClass="mb-3">
+    <BodyTemplate>
+      <HxCardTitle>@NewLocalizer.OptionalData</HxCardTitle>
+      <HxCardText>
+        <div class="mb-3">
+          <HxInputText Label="@NewLocalizer.CurrentAddress"
+					   @bind-Value="@model.CurrentAddress" />
+        </div>
 
-				<div class="mb-3">
-					<HxInputText Label="@NewLocalizer.PhoneNumber"
-								 Type="InputType.Tel"
-								 @bind-Value="@model.PhoneNumber" />
-				</div>
+        <div class="mb-3">
+          <HxInputText Label="@NewLocalizer.PhoneNumber"
+					   Type="InputType.Tel"
+					   @bind-Value="@model.PhoneNumber" />
+        </div>
 
-				<div class="mb-3">
-					<HxInputText Label="@NewLocalizer.Email"
-								 Type="InputType.Email"								 
-								 @bind-Value="@model.Email" />
-				</div>
+        <div class="mb-3">
+          <HxInputText Label="@NewLocalizer.Email"
+					   Type="InputType.Email"
+					   @bind-Value="@model.Email" />
+        </div>
 
-				<div class="mb-3">
-					<HxInputText Label="@NewLocalizer.PassportOrIdNumber"
-								 @bind-Value="@model.PassportOrIdNumber" />
-				</div>
+        <div class="mb-3">
+          <HxInputText Label="@NewLocalizer.PassportOrIdNumber"
+					   @bind-Value="@model.PassportOrIdNumber" />
+        </div>
 
-			</HxCardText>
-		</BodyTemplate>
-	</HxCard>
+      </HxCardText>
+    </BodyTemplate>
+  </HxCard>
 
-	<HxCard CssClass="mb-3">
-		<BodyTemplate>
-		  <HxCardTitle>@NewLocalizer.TestData</HxCardTitle>
-		  <HxCardText>
-			<div class="row">
-			  <HxInputDate Label="@UserDataLocalizer.TestDateTime"
-					 CalendarIcon="BootstrapIcon.Calendar"
-					 UseDefaultDates="false"
-					 CssClass="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2"
-					 @bind-Value="@model.TestDate" />
-			  <HxSelect Label="@NewLocalizer.TestHour"
-				  TItem="TimeType"
-				  TValue="int"
-				  Data="@hourTypes"
-				  TextSelector="@(x => x.Title)"
-				  ValueSelector="@(x => x.Value)"
-				  Nullable="false"
-				  CssClass="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-2 col-xxl-2"
-				  @bind-Value="@model.TestHour" />
-			  <HxSelect Label="@NewLocalizer.TestMinute"
-				  TItem="TimeType"
-				  TValue="int"
-				  Data="@MinuteTypes"
-				  TextSelector="@(x => x.Title)"
-				  ValueSelector="@(x => x.Value)"
-				  Nullable="false"
-				  CssClass="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-2 col-xxl-2"
-				  @bind-Value="@model.TestMinute" />
-			</div>
+  <HxCard CssClass="mb-3">
+    <BodyTemplate>
+      <HxCardTitle>@NewLocalizer.TestData</HxCardTitle>
+      <HxCardText>
+        <div class="row">
+          <div class="col-12 col-sm-5 col-md-5 col-lg-4 col-xl-3 col-xxl-2">
+            <HxInputDate Label="@UserDataLocalizer.TestDateTime"
+						 CalendarIcon="BootstrapIcon.Calendar"
+						 UseDefaultDates="false"
+						 CssClass="col-5 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12"
+						 @bind-Value="@model.TestDate" />
+          </div>
+          <div class="col-12 col-sm-7 col-md-7 col-lg-8 col-xl-9 col-xxl-10">
+            <div class="row">
+              <HxSelect Label="@NewLocalizer.TestHour"
+						TItem="TimeType"
+						TValue="int"
+						Data="@hourTypes"
+						TextSelector="@(x => x.Title)"
+						ValueSelector="@(x => x.Value)"
+						Nullable="false"
+						CssClass="col-4 col-sm-5 col-md-6 col-lg-4 col-xl-3 col-xxl-2"
+						@bind-Value="@model.TestHour" />
+              <HxSelect Label="@NewLocalizer.TestMinute"
+						TItem="TimeType"
+						TValue="int"
+						Data="@MinuteTypes"
+						TextSelector="@(x => x.Title)"
+						ValueSelector="@(x => x.Value)"
+						Nullable="false"
+						CssClass="col-4 col-sm-5 col-md-6 col-lg-4 col-xl-3 col-xxl-2"
+						@bind-Value="@model.TestMinute" />
+            </div>
+          </div>
+        </div>
 
-		      <div class="mb-3">
-		        <HxInputText Label="@NewLocalizer.TestPlace"
-							 @bind-Value="@model.TestPlace" />
-		      </div>
+        <div class="mb-3">
+          <HxInputText Label="@NewLocalizer.TestPlace"
+					   @bind-Value="@model.TestPlace" />
+        </div>
 
-		      <div class="mb-3">
-		        <HxSelect Label="@NewLocalizer.TestType"
-						  TItem="TestType"
-						  TValue="bool"
-						  Data="@testTypes"
-						  TextSelector="@(x => x.Title)"
-						  ValueSelector="@(x => x.Value)"
-						  Nullable="false"
-						  @bind-Value="@model.TestType" />
-		      </div>
-		  </HxCardText>
-			<HxSubmit Text="@NewLocalizer.CreateTest" Color="ThemeColor.Primary" OnValidClick="GenerateAsync" />
-		</BodyTemplate>
-	</HxCard>
+        <div class="mb-3">
+          <HxSelect Label="@NewLocalizer.TestType"
+					TItem="TestType"
+					TValue="bool"
+					Data="@testTypes"
+					TextSelector="@(x => x.Title)"
+					ValueSelector="@(x => x.Value)"
+					Nullable="false"
+					@bind-Value="@model.TestType" />
+        </div>
+      </HxCardText>
+      <HxSubmit Text="@NewLocalizer.CreateTest" Color="ThemeColor.Primary" OnValidClick="GenerateAsync" />
+    </BodyTemplate>
+  </HxCard>
 
 </EditForm>
