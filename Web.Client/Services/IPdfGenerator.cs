@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using CTG.CovidTestsGenerator.Contracts;
+using CTG.CovidTestsGenerator.Contracts.Model;
 
 namespace CTG.CovidTestsGenerator.Web.Client.Services
 {

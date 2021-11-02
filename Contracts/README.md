@@ -10,4 +10,4 @@ Assembly used by both *Web.Server* stack and *Web.Client* stack. It is being **t
 * DTOs for gRPC communication (Requests, Results)
   * do not have to be decorated with `[DataContract]` nor `[DataMember]` attributes
   * except **generics** which are not included automatically and **HAVE** to use `[ProtoContract]` and `[ProtoMember]` attributes
-    * do not use `[DataContract]` nor `[DataMember]`, these tend to be trimmed out by the linker
+    * do not use `[DataContract]` nor `[DataMember]`, these tend to be trimmed out by the linker 

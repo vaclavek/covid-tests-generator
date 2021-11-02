@@ -117,58 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClearAllProfiles" xml:space="preserve">
-    <value>Smazat všechny profily</value>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>Datum narození</value>
   </data>
-  <data name="ClearProfile" xml:space="preserve">
-    <value>Smazat zvolený profil</value>
+  <data name="DefaultCurrentAddress" xml:space="preserve">
+    <value>Brněnská 456, 120 00 Praha 2 - Nové Město</value>
   </data>
-  <data name="CreateTest" xml:space="preserve">
-    <value>Vytvořit test</value>
+  <data name="DefaultEmail" xml:space="preserve">
+    <value>toto.je.muj@email.cz</value>
   </data>
-  <data name="CurrentAddress" xml:space="preserve">
-    <value>Korespondenční adresa</value>
+  <data name="DefaultFullName" xml:space="preserve">
+    <value>Ondřej Václavek</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>E-mail</value>
+  <data name="DefaultPermanentAddress" xml:space="preserve">
+    <value>Pražská 123, 580 05 Brno nad Oslavicí</value>
   </data>
-  <data name="MandatoryData" xml:space="preserve">
-    <value>Povinné údaje</value>
+  <data name="DefaultPhoneNumber" xml:space="preserve">
+    <value>+420 777 147 977</value>
   </data>
-  <data name="Negative" xml:space="preserve">
-    <value>Negativní</value>
+  <data name="DefaultTestPlace" xml:space="preserve">
+    <value>Medical Testing s.r.o., AG CovidPoint, Želetavská ul., 140 00 Praha</value>
   </data>
-  <data name="OptionalData" xml:space="preserve">
-    <value>Volitelné údaje</value>
+  <data name="FirstAndSecondName" xml:space="preserve">
+    <value>Jméno a příjmení</value>
   </data>
-  <data name="PassportOrIdNumber" xml:space="preserve">
-    <value>Číslo dokladu (pas nebo občanský průkaz)</value>
+  <data name="PermanentAddress" xml:space="preserve">
+    <value>Trvalá adresa</value>
   </data>
-  <data name="PhoneNumber" xml:space="preserve">
-    <value>Telefon</value>
-  </data>
-  <data name="Positive" xml:space="preserve">
-    <value>Pozitivní</value>
-  </data>
-  <data name="SavedProfile" xml:space="preserve">
-    <value>Uložený profil</value>
-  </data>
-  <data name="SavedProfiles" xml:space="preserve">
-    <value>Uložené profily</value>
-  </data>
-  <data name="TestData" xml:space="preserve">
-    <value>Údaje o testu</value>
-  </data>
-  <data name="TestHour" xml:space="preserve">
-    <value>Test proběhl v hodině</value>
-  </data>
-  <data name="TestMinute" xml:space="preserve">
-    <value>Test proběhl v minutě</value>
-  </data>
-  <data name="TestPlace" xml:space="preserve">
-    <value>Místo testu</value>
-  </data>
-  <data name="TestType" xml:space="preserve">
-    <value>Typ testu</value>
+  <data name="TestDateTime" xml:space="preserve">
+    <value>Datum testu</value>
   </data>
 </root>

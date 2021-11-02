@@ -2,7 +2,7 @@
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-using CTG.CovidTestsGenerator.Contracts;
+using CTG.CovidTestsGenerator.Contracts.Model;
 using iText.Kernel.Colors;
 using iText.Kernel.Font;
 using iText.Kernel.Pdf;
@@ -35,7 +35,7 @@ namespace CTG.CovidTestsGenerator.Web.Client.Services
 			document.SetFont(font);
 
 			AddFullName(document, userData.FullName);
-			AddPernamentAddress(document, userData.PernamentAddress);
+			AddPernamentAddress(document, userData.PermanentAddress);
 			AddCurrentAddress(document, userData.CurrentAddress);
 			AddDateOfBirth(document, userData.DateOfBirth.Value);
 			AddPhoneNumber(document, userData.PhoneNumber);

@@ -117,58 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClearAllProfiles" xml:space="preserve">
-    <value>Smazat všechny profily</value>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>Date of birth</value>
   </data>
-  <data name="ClearProfile" xml:space="preserve">
-    <value>Smazat zvolený profil</value>
+  <data name="DefaultCurrentAddress" xml:space="preserve">
+    <value>Green street 123, 360 17 Carlsbad 17</value>
   </data>
-  <data name="CreateTest" xml:space="preserve">
-    <value>Vytvořit test</value>
+  <data name="DefaultEmail" xml:space="preserve">
+    <value>this.is.my@email.com</value>
   </data>
-  <data name="CurrentAddress" xml:space="preserve">
-    <value>Korespondenční adresa</value>
+  <data name="DefaultFullName" xml:space="preserve">
+    <value>Thomas Night</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>E-mail</value>
+  <data name="DefaultPermanentAddress" xml:space="preserve">
+    <value>Direct street 123, 111 50 London 5</value>
   </data>
-  <data name="MandatoryData" xml:space="preserve">
-    <value>Povinné údaje</value>
+  <data name="DefaultPhoneNumber" xml:space="preserve">
+    <value>03333 443 443</value>
   </data>
-  <data name="Negative" xml:space="preserve">
-    <value>Negativní</value>
+  <data name="DefaultTestPlace" xml:space="preserve">
+    <value>Medical Testing Ltd., Car Park, Lord St, Gravesend DA12 1ER, London</value>
   </data>
-  <data name="OptionalData" xml:space="preserve">
-    <value>Volitelné údaje</value>
+  <data name="FirstAndSecondName" xml:space="preserve">
+    <value>Firstname and surname</value>
   </data>
-  <data name="PassportOrIdNumber" xml:space="preserve">
-    <value>Číslo dokladu (pas nebo občanský průkaz)</value>
+  <data name="PermanentAddress" xml:space="preserve">
+    <value>Permanent address</value>
   </data>
-  <data name="PhoneNumber" xml:space="preserve">
-    <value>Telefon</value>
-  </data>
-  <data name="Positive" xml:space="preserve">
-    <value>Pozitivní</value>
-  </data>
-  <data name="SavedProfile" xml:space="preserve">
-    <value>Uložený profil</value>
-  </data>
-  <data name="SavedProfiles" xml:space="preserve">
-    <value>Uložené profily</value>
-  </data>
-  <data name="TestData" xml:space="preserve">
-    <value>Údaje o testu</value>
-  </data>
-  <data name="TestHour" xml:space="preserve">
-    <value>Test proběhl v hodině</value>
-  </data>
-  <data name="TestMinute" xml:space="preserve">
-    <value>Test proběhl v minutě</value>
-  </data>
-  <data name="TestPlace" xml:space="preserve">
-    <value>Místo testu</value>
-  </data>
-  <data name="TestType" xml:space="preserve">
-    <value>Typ testu</value>
+  <data name="TestDateTime" xml:space="preserve">
+    <value>Test date</value>
   </data>
 </root>
