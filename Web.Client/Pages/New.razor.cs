@@ -69,13 +69,11 @@ namespace CTG.CovidTestsGenerator.Web.Client.Pages
 
 			model.DateOfBirth = new DateTime(1995, 10, 31);
 			model.PhoneNumber = "+420 736 111 233";
-			model.Email = "jan.novak@example.cz";
 			model.PassportOrIdNumber = "123 457 887";
 			model.TestDate = DateTime.Now.Date;
 			model.TestHour = 18;
 			model.TestMinute = 40;
 			model.TestType = false;
-			model.TestPlace = "Medical Testing s.r.o., AG CovidPoint, Želetavská ul., 140 00 Praha";
 #endif
 			await LoadUserProfilesAsync();
 		}
