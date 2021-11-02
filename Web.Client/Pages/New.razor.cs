@@ -62,12 +62,34 @@ namespace CTG.CovidTestsGenerator.Web.Client.Pages
 				MinuteTypes.Add(new TimeType { Value = minute, Title = minute.ToString("D2") });
 			}
 
+#if DEBUG
 			model.FullName = UserDataLocalizer.DefaultFullName;
 			model.PermanentAddress = UserDataLocalizer.DefaultPermanentAddress;
 			model.CurrentAddress = UserDataLocalizer.DefaultCurrentAddress;
 			model.Email = UserDataLocalizer.DefaultEmail;
 			model.TestPlace = UserDataLocalizer.DefaultTestPlace;
-			model.PhoneNumber = UserDataLocalizer.DefaultPhoneNumber;
+
+			model.DateOfBirth = new DateTime(1995, 10, 31);
+			model.PhoneNumber = "+420 736 111 233";
+			model.Email = "jan.novak@example.cz";
+			model.PassportOrIdNumber = "123 457 887";
+			model.TestDate = DateTime.Now.Date;
+			model.TestHour = 18;
+			model.TestMinute = 40;
+			model.TestType = false;
+			model.TestPlace = "Medical Testing s.r.o., AG CovidPoint, Želetavská ul., 140 00 Praha";
+#endif
+
+			await LoadUserProfilesAsync();
+		}
+
+		private void EmployeeSelectionChanged(string key)
+		{
+			var savedProfile = SavedProfiles.FirstOrDefault(x => x.SavedUserProfileKey == key);
+			if (savedProfile != null)
+			{
+				model = savedProfile;
+			}
 		}
 
 		protected async Task GenerateAsync()
@@ -80,7 +102,37 @@ namespace CTG.CovidTestsGenerator.Web.Client.Pages
 
 			var data = await PdfGenerator.GetPdfAsync(model);
 
-			await JsRuntime.InvokeVoidAsync("jsSaveAsFile", $"Test-{model.TestDate:yyyyMMdd}.pdf", Convert.ToBase64String(data));
+			await JsRuntime.InvokeVoidAsync("jsSaveAsFile", $"Test-{model.TestDateTime:yyyyMMdd}.pdf", Convert.ToBase64String(data));
+		}
+
+		private async Task LoadUserProfilesAsync()
+		{
+			// load from local storage, if some model has been already saved
+			SavedProfiles = await LocalStorage.GetItemAsync<ICollection<UserData>>(LocalStorageModelKey) ?? new List<UserData>();
+		}
+
+		private async Task SaveUserProfilesAsync()
+		{
+			// save to local storage
+			await LocalStorage.SetItemAsync(LocalStorageModelKey, SavedProfiles);
+		}
+
+		private async Task ClearAllLocalStoragesAsync()
+		{
+			await LocalStorage.RemoveItemAsync(LocalStorageModelKey);
+			SavedProfile = null;
+			await LoadUserProfilesAsync();
+		}
+
+		private async Task ClearSelectedLocalStorageAsync()
+		{
+			var profile = SavedProfiles.FirstOrDefault(x => x.SavedUserProfileKey == SavedProfile);
+			if (profile != null)
+			{
+				SavedProfile = null;
+				SavedProfiles.Remove(profile);
+				await SaveUserProfilesAsync();
+			}
 		}
 
 		internal class TestType
