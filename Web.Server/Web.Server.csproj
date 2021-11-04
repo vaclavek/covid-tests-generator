@@ -5,7 +5,7 @@
 		<DisableImplicitComponentsAnalyzers>true</DisableImplicitComponentsAnalyzers>
 		<AssemblyName>CTG.CovidTestsGenerator.Web.Server</AssemblyName>
 		<RootNamespace>CTG.CovidTestsGenerator.Web.Server</RootNamespace>
-		<PublishSingleFile>true</PublishSingleFile>
+		<PublishSingleFile>false</PublishSingleFile>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	</PropertyGroup>
 
