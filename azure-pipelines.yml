@@ -26,11 +26,11 @@ steps:
       command: publish
       publishWebProjects: false      
       projects: '**/Web.Server.csproj'    
-      arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+      arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory) --PackageFileName WebApp.zip'
       zipAfterPublish: True
       versioningScheme: byEnvVar
       versionEnvVar: 'SEMVER'
-- publish: $(build.artifactStagingDirectory)/WebApp.zip
+- publish: $(build.artifactStagingDirectory)/*.zip
   artifact: WebApp
   
 #- task: VSTest@2
