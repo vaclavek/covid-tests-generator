@@ -21,19 +21,16 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-- task: DotNetCoreCLI@2
+- task: VSBuild@1
   inputs:
-      command: publish
-      publishWebProjects: false      
-      projects: '**/Web.Server.csproj'    
-      arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory) --PackageFileName WebApp.zip'
-      zipAfterPublish: True
-      versioningScheme: byEnvVar
-      versionEnvVar: 'SEMVER'
-- publish: $(build.artifactStagingDirectory)/*.zip
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+- publish: $(build.artifactStagingDirectory)/WebApp.zip
   artifact: WebApp
-  
-#- task: VSTest@2
-#  inputs:
-#    platform: '$(buildPlatform)'
-#    configuration: '$(buildConfiguration)'
+
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
