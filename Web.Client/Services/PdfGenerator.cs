@@ -52,6 +52,11 @@ namespace CTG.CovidTestsGenerator.Web.Client.Services
 
 		private void AddFullName(Document document, string fullName)
 		{
+			if (string.IsNullOrWhiteSpace(fullName))
+			{
+				return;
+			}
+
 			var paragraph = new Paragraph(fullName);
 			paragraph.SetFixedPosition(100, 685, 1000);
 			document.Add(paragraph);
@@ -59,14 +64,23 @@ namespace CTG.CovidTestsGenerator.Web.Client.Services
 
 		private void AddPernamentAddress(Document document, string address)
 		{
+			if (string.IsNullOrWhiteSpace(address))
+			{
+				return;
+			}
+
 			var paragraph = new Paragraph(address);
 			paragraph.SetFixedPosition(100, 638, 1000);
 			document.Add(paragraph);
-
 		}
 
 		private void AddCurrentAddress(Document document, string address)
 		{
+			if (string.IsNullOrWhiteSpace(address))
+			{
+				return;
+			}
+
 			var paragraph = new Paragraph(address);
 			paragraph.SetFixedPosition(100, 592, 1000);
 			document.Add(paragraph);
@@ -81,6 +95,11 @@ namespace CTG.CovidTestsGenerator.Web.Client.Services
 
 		private void AddPhoneNumber(Document document, string phoneNumber)
 		{
+			if (string.IsNullOrWhiteSpace(phoneNumber))
+			{
+				return;
+			}
+
 			var paragraph = new Paragraph(phoneNumber);
 			paragraph.SetFixedPosition(308, 542, 1000);
 			document.Add(paragraph);
@@ -88,6 +107,11 @@ namespace CTG.CovidTestsGenerator.Web.Client.Services
 
 		private void AddEmail(Document document, string email)
 		{
+			if (string.IsNullOrWhiteSpace(email))
+			{
+				return;
+			}
+
 			var paragraph = new Paragraph(email);
 			paragraph.SetFixedPosition(100, 506, 1000);
 			document.Add(paragraph);
@@ -95,6 +119,11 @@ namespace CTG.CovidTestsGenerator.Web.Client.Services
 
 		private void AddPassportOrIdNumber(Document document, string passportOrIdNumber)
 		{
+			if (string.IsNullOrWhiteSpace(passportOrIdNumber))
+			{
+				return;
+			}
+
 			var paragraph = new Paragraph(passportOrIdNumber);
 			paragraph.SetFixedPosition(308, 506, 1000);
 			document.Add(paragraph);
@@ -106,10 +135,10 @@ namespace CTG.CovidTestsGenerator.Web.Client.Services
 			{
 				return;
 			}
+
 			var paragraph = new Paragraph(testDateTime.Value.ToString("dd. MM. yyyy HH:mm:ss"));
 			paragraph.SetFixedPosition(100, 360, 1000);
 			document.Add(paragraph);
-
 
 			var paragraphDate = new Paragraph(testDateTime.Value.ToString("dd. MM. yyyy"));
 			paragraphDate.SetFixedPosition(100, 165, 1000);
@@ -146,6 +175,11 @@ namespace CTG.CovidTestsGenerator.Web.Client.Services
 
 		private void AddTestPlace(Document document, string testPlace)
 		{
+			if (string.IsNullOrWhiteSpace(testPlace))
+			{
+				return;
+			}
+
 			var paragraph = new Paragraph(testPlace);
 			paragraph.SetFixedPosition(100, 317, 1000);
 			document.Add(paragraph);
