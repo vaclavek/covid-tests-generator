@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Description" xml:space="preserve">
-    <value>&lt;p&gt; The application will allow you to generate a test on COVID-19. &lt;/p&gt; &lt;p&gt; &lt;strong&gt; Please note that the QR code does not contain the entered values, but it will (currently) appear in the reader as a valid certificate. &gt; &lt;/p&gt; &lt;p&gt; Disclaimer: The author disclaims all responsibility for the use of generated certificates. The application only stood out as a teaching aid. &lt;/p&gt;</value>
+    <value>&lt;p&gt; The application will allow you to generate a czech COVID-19 test. &lt;/p&gt; &lt;p&gt; &lt;strong&gt; Please note that the QR code does not contain the entered values, but it will (currently) appear in čTečka application as a valid certificate. &lt;/p&gt; &lt;p&gt; Disclaimer: The author disclaims all responsibility for the use of generated certificates. The application only stood out as a teaching aid. &lt;/p&gt;</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to fake COVID test generator.</value>
