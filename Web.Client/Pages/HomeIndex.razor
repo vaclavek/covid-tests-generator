@@ -1,4 +1,4 @@
 ﻿@attribute [Route(Routes.Home)]
 
 <h1>@HomeIndexLocalizer.Welcome</h1>
-<p>@HomeIndexLocalizer.Description</p>
+<p>@((MarkupString)HomeIndexLocalizer.Description.Value)</p>
